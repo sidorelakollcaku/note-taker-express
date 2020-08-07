@@ -54,6 +54,7 @@ const handleNoteSave = function () {
   const newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
+    id: Date.now()
   };
 
   saveNote(newNote).then(() => {
@@ -71,10 +72,10 @@ const handleNoteDelete = function (event) {
 
   if (activeNote.id === note.id) {
     activeNote = {};
-  }
+  };
 
   deleteNote(note.id).then(() => {
-    getAndRenderNotes();
+    getAndRenderNote();
     renderActiveNote();
   });
 };
