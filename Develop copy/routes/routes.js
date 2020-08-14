@@ -1,5 +1,5 @@
 var path = require("path");
-var dbInfo = require("./db/db.json");
+var dbInfo = require("../db/db.json");
 
 module.exports = (app) => {
     
@@ -16,9 +16,9 @@ module.exports = (app) => {
         res.json(dbInfo);
     });
     
-    app.delete("/notes", function (req, res) {
+    app.delete("/api/notes/:id", function (req, res) {
         console.log(req.params.id);
-        dbInfo.forEach(el => {          
+        dbInfo.forEach(el => {
             if (req.params.id === el.id) {
                 dbInfo.splice(dbInfo.indexOf(el), 1);
             }
@@ -29,4 +29,7 @@ module.exports = (app) => {
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
+    
+    
+    
 }

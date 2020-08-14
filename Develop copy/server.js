@@ -1,17 +1,19 @@
 var express = require("express");
 
-//Setting  up express
+//Invoke express and set to app variable for use
 var app = express();
+
+//Create port variable
 var PORT = process.env.PORT || 6050;
 
-//Allowing json parsing
+//Middleware to allow json parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 
 
 //Routes
-require("./routes")(app);
+require("./routes/routes")(app);
 
 
 
